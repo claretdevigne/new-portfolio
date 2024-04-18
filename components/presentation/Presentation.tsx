@@ -36,23 +36,23 @@ export const Presentation = () => {
     }
 
     return (
-        <div className="bg-slate-800 min-w-screen px-16 py-12 flex ">
-            <div className="w-1/2">
-                <p className="fade-in text-white mb-5">{ 
+        <div className="bg-slate-800 min-w-screen px-16 py-12 flex flex-col lg:flex-row">
+            <div className="lg:w-1/2">
+                <p className="fade-in text-white mb-5 text-center lg:text-start">{ 
                     languageSelected === "english" 
                         ? texts.english.greeting 
                             : texts.español.greeting }</p>
-                <h1 className="fade-in text-6xl mb-5 text-green-500"><span>👋</span> {
+                <h1 className="fade-in text-6xl mb-5 text-green-500 text-center lg:text-start"><span>👋</span> {
                     languageSelected === "english" 
                         ? texts.english.name 
                             : texts.español.name
                 }</h1>
-                <p className="fade-in text-white mb-5">{
+                <p className="fade-in text-white mb-5 text-center lg:text-start">{
                     languageSelected === "english" 
                         ? texts.english.description 
                             : texts.español.description
                 }</p>
-                <input value={"claretdevigne@gmail.com"} className="fade-in w-1/2 text-green-600 py-1 text-center rounded-2xl outline-none" placeholder="claretdevigne@gmail.com"/>
+                <input value={"claretdevigne@gmail.com"} className="fade-in w-3/4 md:w-1/2 text-green-600 py-1 text-center rounded-2xl outline-none" placeholder="claretdevigne@gmail.com"/>
                 <span>
                     <button onClick={handleCopy} className="fade-in ml-4 align-middle bg-green-200 opacity-80 rounded-full p-1.5">
                         <svg 
@@ -76,8 +76,8 @@ export const Presentation = () => {
                 </span>
                 
                 <div className="mt-4 text-green-500 flex items-center gap-3">
-                <input value={"+52 99 82 91 59 52"} className="fade-in w-1/2 text-green-600 py-1 text-center rounded-2xl outline-none"/>
-                    <span onClick={handleWhatsapp} className="fade-in opacity-70 cursor-pointer">
+                <input value={"+52 99 82 91 59 52"} className="fade-in w-3/4 md:w-1/2 text-green-600 py-1 text-center rounded-2xl outline-none"/>
+                    <span onClick={handleWhatsapp} className="fade- in opacity-70 cursor-pointer">
                         <svg 
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 50 50"
@@ -91,7 +91,7 @@ export const Presentation = () => {
                     </span>
                 </div>
             </div>
-            <div className="w-1/2 flex justify-center items-center">
+            <div className="lg:w-1/2 flex justify-center items-center my-20">
                 <Image className="foto-animation rounded-full w-1/2" src={ Foto } alt="Foto" width={500} height={500} />
             </div>
         </div>

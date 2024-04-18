@@ -3,5 +3,5 @@ import { create } from "zustand";
 
 export const useSettingStore = create(set => ({
     language: "english",
-    setLanguage: () => set((state: SETTING_STORE) => ({ language: state.language === "english" ? "español" : "english"})),
+    setLanguage: (payload: string) => set((state: SETTING_STORE) => ({ language: payload})),
 }))

@@ -1,18 +1,7 @@
 'use client'
-import Image from "next/image"
 import Foto from "@/public/foto.jpg"
 import { useSettingStore } from "@/reducers/store"
-
-const PortfolioCard = (props: any) => {
-
-
-    return (
-        <div className="w-1/3 flex flex-col justify-center gap-5">
-            <Image className="rounded-3xl w-3/4 self-center" src={ props.url } alt="TEXT" width={500} height={500}/>
-            <div className="w-full text-center font-semibold">{ props.description }</div>
-        </div>
-    )
-}
+import { PortfolioCard } from "./PortfolioCard"
 
 const text = {
     english: {
@@ -51,7 +40,7 @@ export const Portfolio = () => {
                     ? text.english.title
                         : text.español.title
             }</h1>
-            <div className="flex w-full gap-5 ">
+            <div className="flex flex-col items-center w-full gap-5 md:flex-row">
 
                 <PortfolioCard url={ Foto } description={
                     languageSelected === "english"

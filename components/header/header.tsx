@@ -2,11 +2,13 @@
 import Link from "next/link"
 import { LanguageDropdown } from "../dropdown/languageDropdown"
 import { useSettingStore } from "@/reducers/store"
+import { useState } from "react"
 
 export const Header = () => {
 
     // TODO: ANY
     const languageSelected = useSettingStore((state: any) => state.language)
+    const [toggleMenu, setToggleMenu] = useState(false)
 
     return (
         <header className="flex fixed w-screen justify-between items-center py-8 px-16 bg-gray-900 text-white z-50">
@@ -18,8 +20,11 @@ export const Header = () => {
                 <span>ev</span>
             </h1>
 
-            <div className="flex lg:hidden">
-                <svg className="cursor-pointer"
+            <div className="flex lg:hidden items-center gap-2">
+                <LanguageDropdown version="mobile" />
+                <svg  
+                    className="cursor-pointer"
+                    onClick={() => setToggleMenu(!toggleMenu)}
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"
                     y="0px"
@@ -115,7 +120,58 @@ export const Header = () => {
                 <p>|</p>
 
                 <LanguageDropdown />
+
             </nav>
+
+            <div className={`${toggleMenu ? "" : "hidden"} lg:hidden absolute top-28 left-0 text-black w-screen bg-white`}>
+                <ul>
+                    <li className="px-16 py-5 cursor-pointer hover:bg-green-500 hover:text-white">
+                        <Link href="/">
+                        <p className="hover:text-green-400">{
+                            languageSelected === "english"
+                                ? "Home"
+                                    : "Inicio"
+                        }</p>
+                        </Link>
+                    </li>
+                    <li className="px-16 py-5 cursor-pointer hover:bg-green-500 hover:text-white">{
+                        <Link href="/about">
+                        <p className="hover:text-green-400">{
+                            languageSelected === "english"
+                                ? "About"
+                                    : "Acerca de"
+                                            }</p>
+                        </Link>
+                    }</li>
+                    <li className="px-16 py-5 cursor-pointer hover:bg-green-500 hover:text-white">{
+                        <Link href="/portfolio">
+                        <p className="hover:text-green-400">{
+                            languageSelected === "english"
+                                ? "Portfolio"
+                                    : "Portafolio"
+                                            }</p>
+                        </Link>
+                    }</li>
+                    <li className="px-16 py-5 cursor-pointer hover:bg-green-500 hover:text-white">{
+                        <Link href="/blog">
+                        <p className="hover:text-green-400">{
+                            languageSelected === "english"
+                                ? "Blog"
+                                    : "Blog"
+                                            }</p>
+                        </Link>
+                    }</li>
+                    <li className="px-16 py-5 cursor-pointer hover:bg-green-500 hover:text-white">{
+                        <Link href="/contact">
+                        <p className="hover:text-green-400">{
+                            languageSelected === "english"
+                                ? "Contact"
+                                    : "Contacto"
+                                            }</p>
+                        </Link>
+                    }</li>
+                </ul>
+            </div>
         </header>
     )
 }
